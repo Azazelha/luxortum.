@@ -34,10 +34,6 @@ sanity deploy
 - Redirect: `/api/patreon-callback`
 - Додай `PATREON_CLIENT_ID`, `PATREON_CLIENT_SECRET`
 
-### 5. Email через SendGrid
-- https://sendgrid.com
-- API Key → `SENDGRID_API_KEY`
-- Верифікуй домен і email → `SENDGRID_FROM_EMAIL`
 
 ---
 
@@ -66,5 +62,3 @@ docker run -p 3000:3000 luxortum
 
 ## Автор
 Створено з любов’ю до візуальної поезії, музичних ритуалів і сучасного коду.
-
-[Luxortum.com](https://luxortum.com) — свобода образу, музики, сенсу.
