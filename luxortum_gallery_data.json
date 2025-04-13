@@ -1,0 +1,40 @@
+{
+  "visuals": [
+    {
+      "title": "Ritual Flame",
+      "description": "A glowing fire invoking transformation.",
+      "imageUrl": "/gallery/ritual-flame.jpg",
+      "tags": [
+        "ritual",
+        "fire",
+        "transformation"
+      ]
+    },
+    {
+      "title": "Dream Portal",
+      "description": "Entry to a symbolic inner journey.",
+      "imageUrl": "/gallery/dream-portal.jpg",
+      "tags": [
+        "dream",
+        "portal",
+        "subconscious"
+      ]
+    }
+  ],
+  "audio": [
+    {
+      "title": "Initiation Soundscape",
+      "audioUrl": "/audio/initiation.mp3",
+      "coverImage": "/gallery/initiation-cover.jpg",
+      "duration": "7:15",
+      "theme": "initiation"
+    },
+    {
+      "title": "Echoes of the Void",
+      "audioUrl": "/audio/void-echoes.mp3",
+      "coverImage": "/gallery/void-cover.jpg",
+      "duration": "5:42",
+      "theme": "emptiness"
+    }
+  ]
+}
