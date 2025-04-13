@@ -1,47 +1,70 @@
-# Luxortum
+# Luxortum — SaaS-платформа творчих образів
 
-**Immersive ritual SaaS platform for modern mystics and creators.**
-
-A curated experience blending art, sound and storytelling. Built with Next.js, Sanity, Stripe and SendGrid. Hosted on Vercel or Netlify.
+**Next.js + Sanity CMS + Stripe + Patreon + SendGrid + Docker + Vercel**
 
 ---
 
-## Features
+## Запуск платформи (повний чеклист)
 
-- Visual & audio gallery
-- Stripe + Patreon subscriptions
-- Admin dashboard with email forms
-- SEO & OpenGraph optimized
-- Auto-revalidate and dynamic sitemap
-- Social launch kit included
+### 1. Деплой на Vercel
+```bash
+npm install -g vercel
+vercel
+```
+- Додай `.env` змінні (див. `.env.example`)
+- Включи Stripe Webhook: `checkout.session.completed` → `/api/stripe-webhook`
+- Додай кастомний домен
+
+### 2. Sanity CMS
+```bash
+cd sanity
+npm install
+sanity login
+sanity deploy
+```
+- Webhook → `/api/sanity-webhook`
+
+### 3. Stripe
+- Створи Product → Price → підписка
+- Скопіюй `price_xxx` → `.env`
+- Вкажи `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_SITE_URL`
+
+### 4. Patreon
+- Створи додаток: https://www.patreon.com/portal
+- Redirect: `/api/patreon-callback`
+- Додай `PATREON_CLIENT_ID`, `PATREON_CLIENT_SECRET`
+
+### 5. Email через SendGrid
+- https://sendgrid.com
+- API Key → `SENDGRID_API_KEY`
+- Верифікуй домен і email → `SENDGRID_FROM_EMAIL`
 
 ---
 
-## Deploy Now
+## Ролі та функції
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Azazelha/luxortum)
-
-Or use [Vercel Deploy](https://vercel.com/import/project?template=https://github.com/Azazelha/luxortum)
+| Сторінка | Функція |
+|---------|---------|
+| `/` | Редирект на `/gallery` |
+| `/gallery` | Карусель образів + фільтрація + lightbox |
+| `/premium` | Доступ лише для підписників |
+| `/subscribe` | Stripe Checkout |
+| `/login-with-patreon` | OAuth з Patreon |
+| `/admin/publish` | Ручна публікація в Instagram |
+| `/admin/dashboard` | Статистика і аналітика |
+| `/api/email/notify` | Email-розсилка підписникам |
 
 ---
 
-## Environment Variables
-
-Create a `.env.local` file and add:
-
-```env
-SENDGRID_API_KEY=your_sendgrid_key
-SENDGRID_FROM_EMAIL=you@luxortum.com
-SANITY_PROJECT_ID=your_sanity_id
-SANITY_DATASET=production
-STRIPE_SECRET_KEY=sk_live_...
-PATREON_CLIENT_ID=your_client_id
-PATREON_CLIENT_SECRET=your_secret
-PATREON_REDIRECT_URI=https://luxortum.com/api/oauth/patreon
+## Запуск у Docker
+```bash
+docker build -t luxortum .
+docker run -p 3000:3000 luxortum
 ```
 
 ---
 
-## License
+## Автор
+Створено з любов’ю до візуальної поезії, музичних ритуалів і сучасного коду.
 
-MIT © Luxortum Team
+[Luxortum.com](https://luxortum.com) — свобода образу, музики, сенсу.
